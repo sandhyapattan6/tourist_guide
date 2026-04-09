@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="booking">
+
+<h1>Book Tour Package</h1>
+
+<form action="{% url 'book_package' %}" method="POST">
+{% csrf_token %}
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<input type="text" name="phone" placeholder="Phone Number" required>
+
+<select name="package" required>
+<option value="">Select Package</option>
+<option value="Goa">Goa</option>
+<option value="Manali">Manali</option>
+<option value="Kerala">Kerala</option>
+<option value="Jaipur">Jaipur</option>
+</select>
+
+<input type="date" name="date" required>
+
+<button type="submit">Book Now</button>
+
+</form>
+
+</section>
+
+{% endblock %}
+

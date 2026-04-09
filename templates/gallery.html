@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="gallery">
+
+<h1 class="heading">Our Gallery</h1>
+
+<div class="gallery-container">
+
+<!-- Goa -->
+<div class="gallery-card">
+<img src="{% static 'images/goa1.jpeg' %}" alt="Goa">
+<div class="overlay">Goa Parasailing Activity</div>
+</div>
+
+<!-- VIDEO 1 -->
+    <div class="gallery-card">
+        <video controls preload="none">
+            <source src="{% static 'videos/goavideo.mp4' %}" type="video/mp4">
+        </video>
+        <div class="overlay">Goa Video</div>
+    </div>
+
+<div class="gallery-card">
+<img src="{% static 'images/goa2.jpeg' %}" alt="Goa">
+<div class="overlay">Goa Chruch </div>
+</div>
+
+
+<!-- Manali -->
+<div class="gallery-card">
+<img src="{% static 'images/manali1.jpeg' %}" alt="Manali">
+<div class="overlay">Manali Giant Swing</div>
+</div>
+
+<!-- VIDEO 2 -->
+    <div class="gallery-card">
+        <video controls preload="none">
+            <source src="{% static 'videos/manalivideo.mp4' %}" type="video/mp4">
+        </video>
+        <div class="overlay">Manali Video</div>
+    </div>
+
+<div class="gallery-card">
+<img src="{% static 'images/manali2.jpeg' %}" alt="Manali">
+<div class="overlay">Manali Snow Tour</div>
+</div>
+
+
+
+<!-- Kerala -->
+<div class="gallery-card">
+<img src="{% static 'images/kerala1.jpeg' %}" alt="Kerala">
+<div class="overlay">Kerala Temples Photos</div>
+</div>
+
+<!-- VIDEO 3 -->
+    <div class="gallery-card">
+        <video controls preload="none">
+            <source src="{% static 'videos/keralavideo.mp4' %}" type="video/mp4">
+        </video>
+        <div class="overlay">Kerala Video</div>
+    </div>
+
+<div class="gallery-card">
+<img src="{% static 'images/kerala2.jpeg' %}" alt="Kerala">
+<div class="overlay">Kerala Activities</div>
+</div>
+
+
+<!-- Jaipur -->
+<div class="gallery-card">
+<img src="{% static 'images/jaipur1.jpeg' %}" alt="Jaipur">
+<div class="overlay">Jaipur Palace Tour</div>
+</div>
+
+<!-- VIDEO 4 -->
+    <div class="gallery-card">
+        <video controls preload="none">
+            <source src="{% static 'videos/jaipurvideo.mp4' %}" type="video/mp4">
+        </video>
+        <div class="overlay">Jaipur Video</div>
+    </div>
+
+<div class="gallery-card">
+<img src="{% static 'images/jaipur2.jpeg' %}" alt="Jaipur">
+<div class="overlay">Jaipur Heritage Tour</div>
+</div>
+
+
+<div class="gallery-video">
+
+<video class="video" autoplay muted loop playsinline>
+    <source src="videos/goavideo.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<script>
+document.querySelectorAll("video").forEach(v => {
+    v.muted = true;
+    v.play();
+});
+</script>
+
+</div>
+
+</section>
+
+{% endblock %}
+
+
+

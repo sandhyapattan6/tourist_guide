@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="packages">
+
+<h1 class="heading">Our Packages</h1>
+
+<div class="package-container">
+
+<!-- Goa -->
+<div class="package-card">
+<img src="{% static 'images/goa.png' %}" alt="Goa">
+
+<h3>Goa Tour</h3>
+<p>3 Days / 2 Nights</p>
+<h4>₹15,000</h4>
+
+<a href="{% url 'package_detail' 'Goa' %}" class="btn">View Details</a>
+</div>
+
+<!-- Manali -->
+<div class="package-card">
+<img src="{% static 'images/manali.jpg' %}" alt="Manali">
+
+<h3>Manali Tour</h3>
+<p>5 Days / 4 Nights</p>
+<h4>₹22,000</h4>
+
+<a href="{% url 'package_detail' 'Manali' %}" class="btn">View Details</a>
+</div>
+
+<!-- Kerala -->
+<div class="package-card">
+<img src="{% static 'images/kerala.jpg' %}" alt="Kerala">
+
+<h3>Kerala Tour</h3>
+<p>4 Days / 3 Nights</p>
+<h4>₹18,000</h4>
+
+<a href="{% url 'package_detail' 'Kerala' %}" class="btn">View Details</a>
+</div>
+
+<!-- Jaipur -->
+<div class="package-card">
+<img src="{% static 'images/jaipur.jpg' %}" alt="Jaipur">
+
+<h3>Jaipur Tour</h3>
+<p>4 Days / 3 Nights</p>
+<h4>₹20,000</h4>
+
+<a href="{% url 'package_detail' 'Jaipur' %}" class="btn">View Details</a>
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}
+
+<a href="{% url 'package_detail' 'Goa' %}" class="btn">View Details</a>
+<a href="{% url 'package_detail' 'Manali' %}" class="btn">View Details</a>
+<a href="{% url 'package_detail' 'Kerala' %}" class="btn">View Details</a>
+<a href="{% url 'package_detail' 'Jaipur' %}" class="btn">View Details</a>
