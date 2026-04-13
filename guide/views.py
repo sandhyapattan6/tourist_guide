@@ -5,11 +5,11 @@ from .models import Booking, Contact, Brand
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
+from django.http import HttpResponse
 
 
 def home(request):
-    brands = Brand.objects.all()
-    return render(request, "index.html", {"brands":brands}) 
+    return render(request, 'index.html')
 
 
 def login_user(request):
