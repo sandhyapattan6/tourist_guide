@@ -175,14 +175,6 @@ def contact(request):
             message=message
         )
 
-        send_mail(
-            subject,
-            message,
-            email,
-            ["your_email@gmail.com"],
-            fail_silently=True,
-        )
-
         return render(request, "contact_success.html")
 
     return render(request, "contact.html")
