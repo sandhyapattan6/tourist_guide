@@ -72,35 +72,40 @@ def package_detail(request, name):
 
 @login_required(login_url='login')
 def book_package(request):
-
     if request.method == "POST":
+        try:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            package = request.POST.get('package')
+            date = request.POST.get('date')
 
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        package = request.POST.get('package')
-        date = request.POST.get('date')
+            # SAVE DATA
+            Booking.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                package=package,
+                date=date
+            )
 
-        Booking.objects.create(
-            name=name,
-            email=email,
-            phone=phone,
-            package=package,
-            date=date
-        )
+            # SEND EMAIL (SAFE)
+            try:
+                send_mail(
+                    "New Tour Booking",
+                    f"New booking from {name}\nEmail: {email}\nPhone: {phone}\nPackage: {package}\nDate: {date}",
+                    "sandhyapattan2006@gmail.com",
+                    ["sandhyapattan2006@gmail.com"],
+                    fail_silently=True,
+                )
+            except Exception as e:
+                print("Email Error:", e)
 
-        # Send email to admin
-        send_mail(
-            "New Tour Booking",
-            f"New booking from {name}\nEmail: {email}\nPhone: {phone}\nPackage: {package}\nDate: {date}",
-            "sandhyapattan2006@gmail.com",
-            ["sandhyapattan2006@gmail.com"],
-            fail_silently=True,
-        )
+            return render(request, "success.html")
 
-        return render(request, "success.html")
+        except Exception as e:
+            return HttpResponse("ERROR: " + str(e))
 
-    # THIS LINE IS IMPORTANT
     return render(request, "book.html")
 
 def services(request):
