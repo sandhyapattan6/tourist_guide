@@ -5,49 +5,39 @@ from . import views
 
 urlpatterns = [
 
-    # Home page
+    # ---------------- HOME ----------------
     path('', views.home, name="home"),
 
-    #Search bar
-    path("search/", views.search_place, name="search"),
-
-    # Login / Register
+    # ---------------- AUTH ----------------
     path("login/", views.login_user, name="login"),
     path("register/", views.register_user, name="register"),
     path("logout/", views.logout_user, name="logout"),
+
+    # ---------------- SEARCH ----------------
+    path("search/", views.search_place, name="search"),
+
+    # ---------------- PACKAGES ----------------
+    path("packages/", views.packages, name="packages"),
+    path("package/<str:name>/", views.package_detail, name="package_detail"),
+
+    # ---------------- BOOKING ----------------
     path("book/", views.book_package, name="book_package"),
 
-    # Packages page
-    path('packages/', views.packages, name='packages'),
+    # ---------------- SERVICES ----------------
+    path("services/", views.services, name="services"),
 
-    # Package details page
-    path('package/<str:name>/', views.package_detail, name='package_detail'),
+    # ---------------- GALLERY ----------------
+    path("gallery/", views.gallery, name="gallery"),
 
-    # Booking
-    path('book/', views.book_package, name='book_package'),
+    # ---------------- CONTACT ----------------
+    path("contact/", views.contact, name="contact"),
 
-    # Services
-    path('services/', views.services, name='services'),
+    # ---------------- REVIEWS ----------------
+    path("reviews/", views.reviews, name="reviews"),
 
-    # Gallery
-    path('gallery/', views.gallery, name='gallery'),
-
-    # Contact
-    path('contact/', views.contact, name='contact'),
-
-    path('package/<str:name>/', views.package_detail, name='package_detail'),
-
-    #Footer
-    path('', views.home, name="home"),
-
-    #Reviews
-    path('reviews/', views.reviews, name='reviews'),
-
-    #About us
-    path('about/', views.about, name='about'),
-
+    # ---------------- ABOUT ----------------
+    path("about/", views.about, name="about"),
 ]
 
-# MEDIA FILES
+# ---------------- MEDIA FILES ----------------
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
