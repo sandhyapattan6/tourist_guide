@@ -154,13 +154,6 @@ def book_package(request):
             date=date
         )
 
-        send_mail(
-            "New Tour Booking",
-            f"Name: {name}\nEmail: {email}\nPhone: {phone}\nPackage: {package}\nDate: {date}",
-            "your_email@gmail.com",
-            ["your_email@gmail.com"],
-            fail_silently=True,
-        )
 
         return render(request, "success.html")
 
