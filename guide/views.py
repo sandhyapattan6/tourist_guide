@@ -163,14 +163,7 @@ def contact(request):
             message=message
         )
 
-        # Send email to admin
-        send_mail(
-            subject,
-            message,
-            email,
-            ["sandhyapattan2006@gmail.com"],
-            fail_silently=True,
-        )
+        
 
         return render(request, "contact_success.html")
 
