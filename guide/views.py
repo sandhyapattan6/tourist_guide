@@ -1,11 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.core.mail import send_mail
-from .models import Booking, Contact, Brand
+from .models import Booking, Contact
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.conf import settings
-from django.http import HttpResponse
+
 
 
 def home(request):
@@ -72,38 +72,35 @@ def package_detail(request, name):
 
 @login_required(login_url='login')
 def book_package(request):
+
     if request.method == "POST":
-            name = request.POST.get('name')
-            email = request.POST.get('email')
-            phone = request.POST.get('phone')
-            package = request.POST.get('package')
-            date = request.POST.get('date')
 
-            # SAVE DATA
-            Booking.objects.create(
-                name=name,
-                email=email,
-                phone=phone,
-                package=package,
-                date=date
-            )
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        package = request.POST.get('package')
+        date = request.POST.get('date')
 
-            # SEND EMAIL (SAFE)
-                send_mail(
-                    "New Tour Booking",
-                    f"New booking from {name}\nEmail: {email}\nPhone: {phone}\nPackage: {package}\nDate: {date}",
-                    "sandhyapattan2006@gmail.com",
-                    ["sandhyapattan2006@gmail.com"],
-                    fail_silently=True,
-                )
-            except Exception as e:
-                print("Email Error:", e)
+        Booking.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            package=package,
+            date=date
+        )
 
-            return render(request, "success.html")
+        # Send email to admin
+        send_mail(
+            "New Tour Booking",
+            f"New booking from {name}\nEmail: {email}\nPhone: {phone}\nPackage: {package}\nDate: {date}",
+            "sandhyapattan2006@gmail.com",
+            ["sandhyapattan2006@gmail.com"],
+            fail_silently=True,
+        )
 
-        except Exception as e:
-            return HttpResponse("ERROR: " + str(e))
+        return render(request, "success.html")
 
+    # THIS LINE IS IMPORTANT
     return render(request, "book.html")
 
 def services(request):

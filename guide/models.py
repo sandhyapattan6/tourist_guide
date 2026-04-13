@@ -22,11 +22,10 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
-from django.db import models
-
 class Brand(models.Model):
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="brands/")  # save logos in media/brands
+    website = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -43,11 +42,3 @@ class Review(models.Model):
     def __str__(self):
         return f"{self.name} ({self.rating}/5)"
 
-from django.db import models
-
-class Brand(models.Model):
-    name = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='brands/')
-
-    def __str__(self):
-        return self.name  

@@ -34,7 +34,6 @@ urlpatterns = [
 
     # Contact
     path('contact/', views.contact, name='contact'),
-    
 
     path('package/<str:name>/', views.package_detail, name='package_detail'),
 
@@ -51,3 +50,4 @@ urlpatterns = [
 
 # MEDIA FILES
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
