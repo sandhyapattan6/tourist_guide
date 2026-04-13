@@ -1,1 +1,1 @@
-web: gunicorn tourist_guide.wsgi
+web: gunicorn tourist_guide.wsgi:application --bind 0.0.0.0:$PORT
