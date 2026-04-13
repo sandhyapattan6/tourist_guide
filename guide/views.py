@@ -82,11 +82,11 @@ def book_package(request):
         date = request.POST.get('date')
 
         Booking.objects.create(
-            name=name,
-            email=email,
-            phone=phone,
-            package=package,
-            date=date
+            name=request.POST.get('name'),
+            email=request.POST.get('email'),
+            phone=request.POST.get('phone'),
+            package=request.POST.get('package'),
+            date=request.POST.get('date')
         )
 
         # Send email to admin
