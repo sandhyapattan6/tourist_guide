@@ -73,7 +73,6 @@ def package_detail(request, name):
 @login_required(login_url='login')
 def book_package(request):
     if request.method == "POST":
-        try:
             name = request.POST.get('name')
             email = request.POST.get('email')
             phone = request.POST.get('phone')
@@ -90,7 +89,6 @@ def book_package(request):
             )
 
             # SEND EMAIL (SAFE)
-            try:
                 send_mail(
                     "New Tour Booking",
                     f"New booking from {name}\nEmail: {email}\nPhone: {phone}\nPackage: {package}\nDate: {date}",
