@@ -58,11 +58,14 @@ def packages(request):
 
 def services(request):
     services_data = [
-        {"title": "Affordable Hotels", "icon": "🏨", "description": "Budget friendly hotels."},
-        {"title": "Fast Travel", "icon": "✈️", "description": "Quick and safe travel."},
-        {"title": "Food & Drinks", "icon": "🍽️", "description": "Local food experience."},
-        {"title": "Adventures", "icon": "🏔️", "description": "Trekking and rafting."},
-        {"title": "24/7 Support", "icon": "📞", "description": "Anytime support."},
+        {"icon": "🌍", "title": "Travel Planning", "description": "Plan your trips efficiently and stress-free."},
+        {"icon": "💻", "title": "Web Development", "description": "Create stunning websites for personal or business use."},
+        {"icon": "📸", "title": "Photography", "description": "Capture your memories professionally."},
+        {"icon": "✈️", "title": "Flight Booking", "description": "Book flights to your dream destinations with ease."},
+        {"icon": "🏨", "title": "Hotel Booking", "description": "Find and reserve the best hotels for your stay."},
+        {"icon": "🛶", "title": "Adventure Tours", "description": "Exciting activities for thrill-seekers."},
+        {"icon": "🍽️", "title": "Food & Dining", "description": "Discover the best restaurants and cuisines."},
+        {"icon": "🚌", "title": "Local Transport", "description": "Reliable transportation within your destination."},
     ]
     return render(request, "services.html", {"services": services_data})
 
@@ -162,22 +165,18 @@ def book_package(request):
 
 # ---------------- CONTACT ----------------
 def contact(request):
+
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        subject = request.POST.get("subject")
-        message = request.POST.get("message")
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
 
-        Contact.objects.create(
-            name=name,
-            email=email,
-            subject=subject,
-            message=message
-        )
+        print(name, email, subject, message)
 
-        return render(request, "contact_success.html")
+        return redirect('contact_success')
 
-    return render(request, "contact.html")
+    return render(request, 'contact.html')
 
 
 # ---------------- SEARCH ----------------
