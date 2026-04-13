@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-3tq@8og2w6^ll1puw$$$56fz49x$m#!%^))g%ku#)avo&vs1vo
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "tourist-guide-cgsj.onrender.com",
+    "tourist-guide-cgsj.onrender.com/book",
     "127.0.0.1",
     "localhost"
 ]
