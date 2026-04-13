@@ -176,6 +176,12 @@ def contact(request):
 
     return render(request, "contact.html")
 
+from .models import Brand
+
+def home(request):
+    brands = Brand.objects.all()  # fetch all brand logos
+    return render(request, "index.html", {"brands": brands})
+
 
 from django.shortcuts import render
 
@@ -314,6 +320,8 @@ def logout_user(request):
 
 from django.shortcuts import render
 
+def home(request):
+    return render(request, "index.html")   # Home page
 
 def reviews(request):
     return render(request, "reviews.html") # Reviews page
