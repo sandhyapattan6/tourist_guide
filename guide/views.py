@@ -1,15 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.shortcuts import render
 from django.core.mail import send_mail
-from .models import Booking, Contact
+from .models import Booking, Contact, Brand
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-
+from django.conf import settings
 
 
 def home(request):
-    return render(request, 'index.html')
+    brands = Brand.objects.all()
+    return render(request, "index.html", {"brands":brands}) 
 
 
 def login_user(request):
@@ -163,7 +163,14 @@ def contact(request):
             message=message
         )
 
-        
+        # Send email to admin
+        send_mail(
+            subject,
+            message,
+            email,
+            ["sandhyapattan2006@gmail.com"],
+            fail_silently=True,
+        )
 
         return render(request, "contact_success.html")
 
